@@ -19,7 +19,6 @@ namespace TareasMCV.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Saludo = localizer["Buenos días"];
             return View();
         }
 
