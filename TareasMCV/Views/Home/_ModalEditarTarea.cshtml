@@ -18,15 +18,19 @@
                         </div>
                         <div class="mb-3">
                             <label>Descripción</label>
-                            <textarea class="form-control" rows="4"
+                            <textarea class="form-control" rows="4" placeholder="Escribe..."
                                     data-bind="value: descripcion,
                                        event: {change: manejarCambioEditarTarea}"> 
                             </textarea>
                         </div>
+                        <!--Pasos-->
+                        <div class="mb-3">
+                            <partial name="_Pasos" />
+                        </div>
                     </div>
                     <div class="col-lg-3">
                         <button data-bind="{click: intentarBorrarTarea}"
-                            class="btn btn-secondary mb-2 w-100 text-start">
+                            class="btn btn-danger mb-2 w-100 text-start">
                             <i class="bi bi-x-lg"></i>
                             Borrar tarea
                         </button>

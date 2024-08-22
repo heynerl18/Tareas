@@ -8,6 +8,7 @@ using System.Globalization;
 using TareasMCV;
 using Microsoft.AspNetCore.Mvc.Razor;
 using TareasMCV.Servicios;
+using System.Text.Json.Serialization;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +25,9 @@ builder.Services.AddControllersWithViews(opciones =>
 .AddDataAnnotationsLocalization(opciones =>
 {
     opciones.DataAnnotationLocalizerProvider = (_, factoria) => factoria.Create(typeof(RecursoCompartido));
+}).AddJsonOptions(opciones =>
+{
+    opciones.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
 
 builder.Services.AddDbContext<ApplicationDbContext>(opciones => opciones.UseSqlServer("name=DefaultConnection"));
