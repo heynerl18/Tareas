@@ -58,7 +58,7 @@ async function actualizarOrdenTareas() {
     await enviarIdsTareasAlBackend(ids);
 
     const arregloOrdenado = tareaListadoViewModel.tareas.sorted(function (a, b) {
-        return ids.indexOf(a.id().toString()) - ids.indexOf(b.ids.toString());
+        return ids.indexOf(a.id().toString()) - ids.indexOf(b.id().toString());
     });
 
     tareaListadoViewModel.tareas([]);
@@ -107,10 +107,13 @@ async function manejarClickTarea(tarea) {
     tareaEditarVM.descripcion(json.descripcion);
 
     tareaEditarVM.pasos([]);
+    tareaEditarVM.archivosAdjuntos([]);
 
     json.pasos.forEach(paso => {
         tareaEditarVM.pasos.push(new pasoViewModel({ ...paso, modoEdicion: false }));
     });
+
+    prepararArchivosAdjuntos(json.archivosAdjuntos);
 
     modalEditarTareaBootstrap.show();
 }
